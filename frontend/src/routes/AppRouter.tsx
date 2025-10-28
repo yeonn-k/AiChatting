@@ -8,6 +8,7 @@ import Manage from "@/pages/Manage/Manage";
 import ChooseChar from "@/pages/ChooseChar/ChooseChar";
 import Chat from "@/pages/Chat/Chat";
 import Entry from "@/pages/Entry/Entry";
+import AddChar from "@/pages/AddChar/AddChar";
 
 function AppRouter() {
   const router = createBrowserRouter([
@@ -44,6 +45,14 @@ function AppRouter() {
       element: (
         <Protected>
           <Chat />
+        </Protected>
+      ),
+    },
+    {
+      path: ROUTE_LINK.ADD_CHARACTER.path,
+      element: (
+        <Protected>
+          <AddChar />
         </Protected>
       ),
     },
