@@ -1,3 +1,67 @@
 import styled from "styled-components";
 
-export const S = {};
+interface ImgUrlProps {
+  imgUrl: string;
+}
+
+export const S = {
+  Container: styled.div`
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  `,
+  NoChar: styled.div`
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `,
+  Char: styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 25%;
+    aspect-ratio: 1 / 1;
+    margin: 3% 0;
+  `,
+  CharImg: styled.div<ImgUrlProps>`
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    background-image: url(${(props) => props.imgUrl});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 100%;
+  `,
+  CharName: styled.div`
+    width: 100%;
+    height: 20px;
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    font-weight: 700;
+    color: ${(props) => props.theme.color.green};
+  `,
+  ChatBox: styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2%;
+
+    width: 90%;
+    height: 75%;
+    border-radius: 20px;
+    background-color: ${(props) => props.theme.color.green50};
+  `,
+};

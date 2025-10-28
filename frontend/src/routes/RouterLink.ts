@@ -3,7 +3,7 @@ const ROUTE_LINK = {
   SIGNIN: { path: "signin", link: "/signin" },
   SIGNUP: { path: "signup", link: "/signup" },
   USER: { path: "user", link: "/user" },
-  CHOOSECHAR: { path: "choosechar", link: "/char" },
+  CHOOSECHAR: { path: "choosechar", link: "/choosechar" },
   CHAT: {
     path: "/chat/:charId",
     link: (id: string) => `/chat/${id}`,

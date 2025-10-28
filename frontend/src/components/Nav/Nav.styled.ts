@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const S = {
@@ -25,7 +26,7 @@ export const S = {
     gap: 30px;
     margin-right: 20px;
   `,
-  Menu: styled.div`
+  Menu: styled(Link)`
     display: flex;
     justify-content: center;
     align-items: center;
