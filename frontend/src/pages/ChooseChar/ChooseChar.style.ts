@@ -16,8 +16,11 @@ export const S = {
     width: 80%;
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 2%;
+    row-gap: 30px;
   `,
   Char: styled.div`
     display: flex;
@@ -25,7 +28,7 @@ export const S = {
     justify-content: space-between;
     align-items: center;
 
-    width: 30%;
+    width: 20%;
     aspect-ratio: 1 / 1;
 
     opacity: 0.6;
@@ -55,5 +58,14 @@ export const S = {
     font-size: larger;
     font-weight: 700;
     color: ${(props) => props.theme.color.green};
+  `,
+  AddIcon: styled.img`
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    border-radius: 100%;
+    padding: 24px;
+    border: 2px dashed ${({ theme }) => theme.color.green};
+    background-color: ${({ theme }) => theme.color.ivory};
   `,
 };

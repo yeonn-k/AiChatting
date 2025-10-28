@@ -8,12 +8,12 @@ export const S = {
     gap: 6px;
   `,
 
-  Label: styled.label`
+  Label: styled.label<{ $labelColor?: string }>`
     display: block;
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 4px;
-    color: ${({ theme }) => theme.color.white};
+    color: ${({ $labelColor, theme }) => $labelColor || theme.color.white};
   `,
 
   Input: styled.input<{ $error?: boolean }>`

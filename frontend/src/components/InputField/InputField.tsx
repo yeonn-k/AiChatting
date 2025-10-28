@@ -8,6 +8,7 @@ interface InputFieldProps {
   placeholder?: string;
   pattern?: RegExp;
   required?: boolean;
+  labelColor?: string;
 }
 
 const InputField = ({
@@ -17,6 +18,7 @@ const InputField = ({
   placeholder,
   pattern,
   required = true,
+  labelColor,
 }: InputFieldProps) => {
   const {
     register,
@@ -27,7 +29,11 @@ const InputField = ({
 
   return (
     <S.InputContainer>
-      {label && <S.Label htmlFor={name}>{label}</S.Label>}
+      {label && (
+        <S.Label htmlFor={name} $labelColor={labelColor}>
+          {label}
+        </S.Label>
+      )}
       <S.Input
         id={name}
         type={type}

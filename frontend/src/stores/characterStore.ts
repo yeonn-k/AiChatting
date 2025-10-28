@@ -5,6 +5,7 @@ export type Character = {
   id: string;
   name: string;
   imgUrl: string;
+  prompt?: string;
 };
 
 type CharState = {
@@ -12,6 +13,7 @@ type CharState = {
   selectedId: string | null;
   select: (id: string) => void;
   getCharById: (id: string) => Character | undefined;
+  addCustom: (c: Character) => void;
 };
 
 const defaultChars: Character[] = [
@@ -26,8 +28,8 @@ export const useCharacterStore = create<CharState>()(
       list: defaultChars,
       selectedId: null,
       select: (id) => set({ selectedId: id }),
-
       getCharById: (id) => get().list.find((c) => c.id === id),
+      addCustom: (c) => set((s) => ({ list: [...s.list, c] })),
     }),
     { name: "character-storage" }
   )
