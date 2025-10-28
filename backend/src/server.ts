@@ -1,13 +1,16 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import dotenv from "dotenv";
 
 import authRouter from "./routes/auth";
 import chatRouter from "./routes/chat";
 
-dotenv.config();
 const app = express();
+
+console.log("✅ OPENAI_API_KEY loaded:", !!process.env.OPENAI_API_KEY);
 
 app.use(
   cors({
