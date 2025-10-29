@@ -3,7 +3,7 @@ import { S } from "./SingUp.style";
 import InputField from "@/components/InputField/InputField";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import useAuthStore from "@/stores/authStore";
+
 import { toast } from "react-toastify";
 import ROUTE_LINK from "@/routes/RouterLink";
 
@@ -17,7 +17,6 @@ interface FormData {
 const SignUp = () => {
   const methods = useForm<FormData>({ mode: "onSubmit" });
   const navigate = useNavigate();
-  const login = useAuthStore((state) => state.login);
   const [submitting, setSubmitting] = useState(false);
 
   const onSubmit = async (data: FormData) => {
@@ -37,8 +36,6 @@ const SignUp = () => {
       });
 
       if (res.status === 201) {
-        email;
-        await login(data.email, data.password);
         toast.success("✨ 회원가입이 성공적으로 완료되었습니다.");
         setTimeout(() => {
           navigate("/signin");
