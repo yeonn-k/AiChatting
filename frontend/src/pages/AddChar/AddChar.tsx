@@ -9,7 +9,7 @@ import { postAxios } from "@/utils/axios";
 import { useCharacterStore } from "@/stores/characterStore";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { resizeToWebp } from "@/utils/handleImg";
+import { resizeToWebp } from "@/utils/handleImgSize";
 
 interface AddCharForm {
   name: string;
