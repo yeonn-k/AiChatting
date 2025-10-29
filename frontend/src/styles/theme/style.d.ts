@@ -24,5 +24,11 @@ declare module "styled-components" {
       title: string;
       small: string;
     };
+    device: {
+      sm: string;
+      md: string;
+      lg: string;
+      tabletLandscape: string;
+    };
   }
 }

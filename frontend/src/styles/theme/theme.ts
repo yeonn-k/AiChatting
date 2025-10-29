@@ -1,5 +1,11 @@
 import { DefaultTheme } from "styled-components";
 
+const size = {
+  sm: "480px",
+  md: "768px",
+  lg: "1024px",
+};
+
 const theme: DefaultTheme = {
   color: {
     green: "#34774e",
@@ -20,6 +26,12 @@ const theme: DefaultTheme = {
     LogoFont: "yg-jalnan",
     title: "28px",
     small: "13px",
+  },
+  device: {
+    sm: `(max-width: ${size.sm})`,
+    md: `(max-width: ${size.md})`,
+    lg: `(max-width: ${size.lg})`,
+    tabletLandscape: `(max-width: 1024px), (orientation: landscape)`,
   },
 };
 

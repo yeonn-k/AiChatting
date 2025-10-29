@@ -15,6 +15,18 @@ export const S = {
     flex-direction: column;
     align-items: center;
     gap: 8px;
+
+    @media ${({ theme }) => theme.device.md} {
+      height: 75%;
+      gap: 3%;
+    }
+
+    @media ${({ theme }) => theme.device.tabletLandscape} {
+      width: 95%;
+      height: 73%;
+
+      gap: 3%;
+    }
   `,
 
   Bubble: styled.div<{ $role: Role }>`
@@ -31,7 +43,7 @@ export const S = {
     border-radius: 12px;
     color: #fff;
     background-color: ${({ $role, theme }) =>
-      $role === "user" ? theme.color.green : theme.color.green50};
+      $role === "user" ? theme.color.green : theme.color.grey};
     white-space: pre-wrap;
     word-break: break-word;
   `,

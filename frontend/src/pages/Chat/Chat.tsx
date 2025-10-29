@@ -111,17 +111,19 @@ const Chat = () => {
   };
 
   return (
-    <S.Container>
+    <>
       <Nav />
-      <S.Char>
-        <S.CharImg imgUrl={char.imgUrl} />
-        <S.CharName>{char.name}</S.CharName>
-      </S.Char>
-      <S.ChatBox>
-        <ChatArea messages={messages} loading={sending} />
-        <InputBox onSend={handleSend} disabled={sending} />
-      </S.ChatBox>
-    </S.Container>
+      <S.Container>
+        <S.Char>
+          <S.CharImg imgUrl={char.imgUrl} />
+          <S.CharName>{char.name}</S.CharName>
+        </S.Char>
+        <S.ChatBox>
+          <ChatArea messages={messages} loading={sending} />
+          <InputBox onSend={handleSend} disabled={sending} />
+        </S.ChatBox>
+      </S.Container>
+    </>
   );
 };
 

@@ -7,7 +7,8 @@ interface ImgUrlProps {
 export const S = {
   Container: styled.div`
     width: 100%;
-    height: 100vh;
+    height: calc(100% - 60px);
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,6 +30,18 @@ export const S = {
     width: 25%;
     aspect-ratio: 1 / 1;
     margin: 3% 0;
+
+    @media ${({ theme }) => theme.device.md} {
+      width: 20%;
+      aspect-ratio: 1 / 1;
+      margin: 2% 0;
+    }
+
+    @media ${({ theme }) => theme.device.tabletLandscape} {
+      width: 10%;
+      aspect-ratio: 1 / 1;
+      margin: 2% 0;
+    }
   `,
   CharImg: styled.div<ImgUrlProps>`
     width: 100%;
@@ -51,6 +64,12 @@ export const S = {
     font-size: larger;
     font-weight: 700;
     color: ${(props) => props.theme.color.green};
+    white-space: nowrap;
+
+    @media ${({ theme }) => theme.device.md} {
+      font-size: medium;
+      margin-top: 10px;
+    }
   `,
   ChatBox: styled.div`
     display: flex;
@@ -63,5 +82,15 @@ export const S = {
     height: 75%;
     border-radius: 20px;
     background-color: ${(props) => props.theme.color.green50};
+
+    @media ${({ theme }) => theme.device.md} {
+      height: 75%;
+      gap: 3%;
+    }
+
+    @media ${({ theme }) => theme.device.tabletLandscape} {
+      height: 70%;
+      gap: 3%;
+    }
   `,
 };

@@ -8,6 +8,10 @@ export const S = {
     justify-content: center;
     align-items: flex-start;
     padding-top: 100px;
+
+    @media ${({ theme }) => theme.device.md} {
+      background: ${({ theme }) => theme.color.ivory};
+    }
   `,
 
   Form: styled.form`
@@ -19,6 +23,10 @@ export const S = {
     border-radius: 16px;
     background: ${({ theme }) => theme.color.ivory};
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    @media ${({ theme }) => theme.device.md} {
+      box-shadow: none;
+    }
   `,
 
   InputContainer: styled.div`
