@@ -4,11 +4,7 @@ import { postAxios } from "@/utils/axios";
 import { toast } from "react-toastify";
 
 interface UserProfile {
-  id?: string;
-  email?: string;
-  nickname?: string;
-  name?: string;
-  image?: string;
+  token: string;
 }
 
 interface UserState {
@@ -26,7 +22,7 @@ const useAuthStore = create<UserState>()(
 
       login: async (email, password) => {
         const res = await postAxios("/auth/signin", { email, password });
-        const { user, token } = res.data || {};
+        const { token } = res.data || {};
 
         if (!token) throw new Error("토큰이 없습니다.");
 
@@ -35,11 +31,7 @@ const useAuthStore = create<UserState>()(
         set({
           isAuthenticated: true,
           user: {
-            id: user?._id,
-            email: user?.email,
-            nickname: user?.nickname,
-            name: user?.name,
-            image: user?.image,
+            token: token,
           },
         });
       },
@@ -47,7 +39,6 @@ const useAuthStore = create<UserState>()(
       logout: () => {
         set({ isAuthenticated: false, user: null });
         localStorage.removeItem("token");
-        localStorage.removeItem("auth-storage");
         toast.info("로그아웃 되었어요.");
       },
     }),
