@@ -24,7 +24,6 @@ const Nav = () => {
         <S.Logo>Hello There</S.Logo>
         <S.MenuBox>
           <S.Menu to={ROUTE_LINK.CHOOSECHAR.link}>choose character</S.Menu>
-          <S.Menu to={ROUTE_LINK.MANAGE.link}>manage</S.Menu>
           <S.NavButton onClick={handleSignOut}>sign out</S.NavButton>
         </S.MenuBox>
       </S.NavContainer>

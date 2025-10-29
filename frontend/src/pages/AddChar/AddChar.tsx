@@ -8,6 +8,8 @@ import ROUTE_LINK from "@/routes/RouterLink";
 import { postAxios } from "@/utils/axios";
 import { useCharacterStore } from "@/stores/characterStore";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { resizeToWebp } from "@/utils/handleImg";
 
 interface AddCharForm {
   name: string;
@@ -17,20 +19,42 @@ interface AddCharForm {
 
 const AddChar = () => {
   const methods = useForm<AddCharForm>({ mode: "onBlur" });
+  const navigate = useNavigate();
+  const addCustom = useCharacterStore((s) => s.addCustom);
+  const [preview, setPreview] = useState<string>("");
   const {
     handleSubmit,
     reset,
     formState: { isSubmitting },
   } = methods;
 
-  const navigate = useNavigate();
-  const addCustom = useCharacterStore((s) => s.addCustom); // 스토어에 이 함수 추가(아래 참고)
+  const onFileChange = async (file?: File) => {
+    if (!file) return;
+    try {
+      const { webpFile, previewUrl } = await resizeToWebp(file);
 
-  const createCharacter = (fd: FormData) => {
-    return postAxios("/addchar", fd, {
+      setPreview((prev) => {
+        if (prev) URL.revokeObjectURL(prev);
+        return previewUrl;
+      });
+
+      const dt = new DataTransfer();
+      dt.items.add(webpFile);
+      const input = document.getElementById("image") as HTMLInputElement | null;
+      if (input) input.files = dt.files;
+    } catch (e: any) {
+      toast.error(e.message || "이미지 처리 실패");
+    }
+  };
+
+  const createCharacter = async (fd: FormData) => {
+    const res = await postAxios("/addchar", fd, {
       headers: { "Content-Type": "multipart/form-data" },
     });
+
+    return res;
   };
+
   const onSubmit = async (data: AddCharForm) => {
     try {
       const fd = new FormData();
@@ -39,9 +63,10 @@ const AddChar = () => {
       if (data.image?.[0]) fd.append("image", data.image[0]);
 
       const res = await createCharacter(fd);
-      const char = res.data?.character; // {id,name,prompt,imgUrl, ...}
+      const char = res.data?.character;
 
-      // 스토어에 반영(없으면 스킵하고 단순 이동만 해도 됨)
+      if (!char) toast.error("캐릭터 생성 중 오류가 발생했습니다.");
+
       addCustom?.({
         id: char.id,
         name: char.name,
@@ -51,7 +76,7 @@ const AddChar = () => {
 
       toast.success("새 캐릭터가 생성되었습니다!");
       reset();
-      navigate(ROUTE_LINK.CHOOSECHAR.link); // 목록 화면으로
+      navigate(ROUTE_LINK.CHOOSECHAR.link);
     } catch (err: any) {
       const msg =
         err?.response?.data?.message ||
@@ -90,7 +115,14 @@ const AddChar = () => {
                 id="image"
                 accept="image/*"
                 {...methods.register("image", { required: true })}
+                onChange={(e) => onFileChange(e.target.files?.[0])}
               />
+
+              {preview && (
+                <S.PreviewBox>
+                  <S.Preview src={preview} alt="preview" style={{}} />
+                </S.PreviewBox>
+              )}
             </S.InputContainer>
 
             <S.SubmitBtn type="submit" disabled={isSubmitting}>
