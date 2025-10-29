@@ -36,10 +36,10 @@ const SignUp = () => {
         password,
       });
 
-      if (res.status === 200) {
+      if (res.status === 201) {
         email;
         await login(data.email, data.password);
-        toast.success("✨ 로그인 성공!");
+        toast.success("✨ 회원가입이 성공적으로 완료되었습니다.");
         setTimeout(() => {
           navigate("/signin");
         }, 1000);

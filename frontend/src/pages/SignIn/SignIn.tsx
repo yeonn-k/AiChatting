@@ -39,7 +39,7 @@ const SignIn = () => {
       if (res.status === 200) {
         email;
         await login(data.email, data.password);
-        toast.success("✨ 로그인 성공!");
+        toast.success("✨ 로그인 되었습니다.");
         setTimeout(() => {
           navigate("/choosechar");
         }, 1000);

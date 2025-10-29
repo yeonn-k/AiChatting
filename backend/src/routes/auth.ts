@@ -15,13 +15,17 @@ router.post("/signup", async (req, res) => {
     return res.status(400).json({ message: "필수 입력값 누락" });
 
   const exists = users.find((u) => u.email === email);
-  if (exists) return res.status(409).json({ message: "이미 존재하는 이메일" });
+  if (exists)
+    return res.status(409).json({ message: "이미 존재하는 이메일입니다." });
 
   const hash = await bcrypt.hash(password, 10);
   users.push({ email, password: hash });
 
   const token = jwt.sign({ email }, JWT_SECRET, { expiresIn: "7d" });
-  res.json({ token });
+
+  return res.status(201).json({
+    message: "회원가입이 성공적으로 완료되었습니다.",
+  });
 });
 
 // 로그인
