@@ -1,15 +1,20 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import bg from "@/assets/images/entryImg-v.jpg";
+import bgV from "@/assets/images/entryImg-v.jpg";
+import bgH from "@/assets/images/entryImg-h.jpg";
 
 export const S = {
   EntryPointBox: styled.div`
     width: 100%;
     height: 100vh;
-    background-image: url(${bg});
+    background-image: url(${bgV});
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+
+    @media ${({ theme }) => theme.device.md} {
+      background-image: url(${bgH});
+    }
   `,
   BoxOverlay: styled.div`
     width: 100%;
