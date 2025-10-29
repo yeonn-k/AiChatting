@@ -13,7 +13,7 @@ const Nav = () => {
     } catch {
       console.warn("서버 로그아웃 실패 — 프론트에서만 처리합니다.");
     } finally {
-      localStorage.removeItem("token");
+      localStorage.clear();
       toast.success("로그아웃 되었습니다!");
       navigate(ROUTE_LINK.SIGNIN.link); // 로그인 페이지로 리디렉션
     }
