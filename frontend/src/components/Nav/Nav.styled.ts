@@ -42,4 +42,18 @@ export const S = {
       color: ${(props) => props.theme.color.yellow};
     }
   `,
+  NavButton: styled.button`
+    all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    color: ${({ theme }) => theme.color.white};
+    font-size: larger;
+    font-weight: 700;
+    cursor: pointer;
+    &:hover {
+      color: ${({ theme }) => theme.color.yellow};
+    }
+  `,
 };

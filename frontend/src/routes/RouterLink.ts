@@ -10,6 +10,7 @@ const ROUTE_LINK = {
   },
   MANAGE: { path: "manage", link: "/manage" },
   ADD_CHARACTER: { path: "addchar", link: "/addchar" },
+  SIGNOUT: { path: "signout", link: "/signout" },
 };
 
 export default ROUTE_LINK;
