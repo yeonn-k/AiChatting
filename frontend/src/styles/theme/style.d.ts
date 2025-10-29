@@ -28,6 +28,7 @@ declare module "styled-components" {
       sm: string;
       md: string;
       lg: string;
+      tabletLandscape: string;
     };
   }
 }

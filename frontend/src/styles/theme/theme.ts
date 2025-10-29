@@ -31,6 +31,7 @@ const theme: DefaultTheme = {
     sm: `(max-width: ${size.sm})`,
     md: `(max-width: ${size.md})`,
     lg: `(max-width: ${size.lg})`,
+    tabletLandscape: `(max-width: 1024px), (orientation: landscape)`,
   },
 };
 

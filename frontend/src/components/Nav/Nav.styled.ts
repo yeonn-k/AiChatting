@@ -3,6 +3,10 @@ import styled from "styled-components";
 
 export const S = {
   NavContainer: styled.div`
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
     width: 100%;
     height: 60px;
     background-color: ${(props) => props.theme.color.green};
@@ -18,13 +22,20 @@ export const S = {
     color: white;
     font-size: 20px;
     font-family: ${(props) => props.theme.font.LogoFont};
+    white-space: nowrap;
   `,
   MenuBox: styled.div`
+    margin-left: auto;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
-    margin-right: 20px;
+    justify-content: flex-end;
+    align-content: center;
+    gap: 10px;
+    text-align: right;
+
+    @media ${({ theme }) => theme.device.md} {
+      justify-content: center;
+      text-align: center;
+    }
   `,
   Menu: styled(Link)`
     display: flex;
@@ -35,6 +46,12 @@ export const S = {
     color: ${(props) => props.theme.color.white};
     font-size: larger;
     font-weight: 700;
+    white-space: nowrap;
+
+    @media ${({ theme }) => theme.device.md} {
+      font-size: medium;
+      white-space: pre-wrap;
+    }
 
     cursor: pointer;
 
@@ -51,6 +68,14 @@ export const S = {
     color: ${({ theme }) => theme.color.white};
     font-size: larger;
     font-weight: 700;
+    white-space: nowrap;
+    margin-right: 20px;
+
+    @media ${({ theme }) => theme.device.md} {
+      font-size: medium;
+      white-space: pre-wrap;
+    }
+
     cursor: pointer;
     &:hover {
       color: ${({ theme }) => theme.color.yellow};

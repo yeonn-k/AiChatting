@@ -7,20 +7,32 @@ export const S = {
   Container: styled.div`
     width: 100%;
     height: 100vh;
+    padding-top: 140px;
+
     display: flex;
     justify-content: center;
     align-items: center;
   `,
 
   CharsBox: styled.div`
+    display: grid;
     width: 80%;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2%;
     row-gap: 30px;
+    column-gap: 2%;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    @media ${({ theme }) => theme.device.md} {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media ${({ theme }) => theme.device.sm} {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 4%;
+    }
+
+    justify-items: center;
+    align-items: start;
   `,
   Char: styled.div`
     display: flex;
@@ -28,7 +40,7 @@ export const S = {
     justify-content: space-between;
     align-items: center;
 
-    width: 20%;
+    width: 90%;
     aspect-ratio: 1 / 1;
 
     opacity: 0.6;
@@ -58,6 +70,11 @@ export const S = {
     font-size: larger;
     font-weight: 700;
     color: ${(props) => props.theme.color.green};
+    white-space: nowrap;
+
+    @media ${({ theme }) => theme.device.md} {
+      font-size: medium;
+    }
   `,
   AddIcon: styled.img`
     width: 100%;
