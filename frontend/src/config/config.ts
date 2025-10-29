@@ -5,7 +5,6 @@ export const APIS = {
   signin: `${BASE_URL}${ROUTE_LINK.SIGNIN.link}`,
   signup: `${BASE_URL}${ROUTE_LINK.SIGNUP.link}`,
   user: `${BASE_URL}${ROUTE_LINK.USER.link}`,
-  manage: `${BASE_URL}${ROUTE_LINK.MANAGE.link}`,
 
   storePictureUpload: `${BASE_URL}/uploads`,
   getImageBase: `${BASE_URL}/`,

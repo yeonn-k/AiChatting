@@ -8,7 +8,6 @@ const ROUTE_LINK = {
     path: "/chat/:charId",
     link: (id: string) => `/chat/${id}`,
   },
-  MANAGE: { path: "manage", link: "/manage" },
   ADD_CHARACTER: { path: "addchar", link: "/addchar" },
   SIGNOUT: { path: "signout", link: "/signout" },
 };

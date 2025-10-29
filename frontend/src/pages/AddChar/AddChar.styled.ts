@@ -61,4 +61,17 @@ export const S = {
       cursor: not-allowed;
     }
   `,
+  PreviewBox: styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `,
+  Preview: styled.img`
+    margin-top: 3%;
+    width: 36%;
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+    border-radius: 50%;
+  `,
 };

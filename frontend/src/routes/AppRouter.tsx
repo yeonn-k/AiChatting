@@ -4,7 +4,6 @@ import Protected from "./Protected";
 
 import SignIn from "@/pages/SignIn/SignIn";
 import SignUp from "@/pages/SignUp/SignUp";
-import Manage from "@/pages/Manage/Manage";
 import ChooseChar from "@/pages/ChooseChar/ChooseChar";
 import Chat from "@/pages/Chat/Chat";
 import Entry from "@/pages/Entry/Entry";
@@ -23,14 +22,6 @@ function AppRouter() {
     {
       path: ROUTE_LINK.SIGNIN.path,
       element: <SignIn />,
-    },
-    {
-      path: ROUTE_LINK.MANAGE.path,
-      element: (
-        <Protected>
-          <Manage />
-        </Protected>
-      ),
     },
     {
       path: ROUTE_LINK.CHOOSECHAR.path,
